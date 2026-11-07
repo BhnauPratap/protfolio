@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  color: #111;
+  background-color: #fff;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  border-right: 1px solid #e5e5e5;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  flex-shrink: 0;
+  border-right: 1px solid #eaeaea;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #ddd;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.profile-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.profile-location {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.experience-text {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.experience-logos {
+  display: flex;
+  gap: -10px; 
+  align-self: flex-start;
+  margin-bottom: 25px;
+}
+
+.exp-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ye sabse zaroori line hai: ye kisi bhi image ko circle ke bahar nahi nikalne degi */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Halki si 3D shadow di hai taaki logos aur pyare lagein */
+}
+
+.exp-logo img {
+  width: 22px;  /* Image ko circle (35px) se thoda chota rakha hai taaki chipka hua na lage */
+  height: 22px;
+  object-fit: contain;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn-message {
+  flex: 1;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-bookmark {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 15px;
+  color: #555;
+  text-decoration: none;
+  padding: 5px 0;
+}
+
+.menu-item.active {
+  font-weight: 700;
+  color: #000;
+}
+
+.main-content {
+  flex: 1;
+  height: 100vh; /* Ye line magic hai: ye batati hai ki screen full hai aur baaki cheezein scroll karni hain */
+  overflow-y: auto; /* Ye tumhara upar-neeche ka scroll wapas layega */
+  overflow-x: hidden;
+  padding: 0;
+  background-color: #fff;
+}
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0; /* Left/Right padding yahan se hata di */
+  border-bottom: 1px solid #eaeaea;
+  background-color: #fff;
+  position: relative;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.yellow-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #fcd53f; 
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+.logo-wrapper {
+  max-width: 650px; /* Ye wo limit hai jiske bahar logos nahi jayenge */
+  margin: 0 auto; /* Ye is dabbe ko screen ke bilkul center mein rakhega */
+  overflow: hidden; /* Dabbe ke bahar nikalte hi logos gayab ho jayenge */
+  
+  /* Ye line edges par ekdam professional 'fade-out' (dhundhla) effect degi */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px; 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hamburger-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hero-section {
+  flex-shrink: 0;
+  height: 85vh;
+  min-height: 500px;
+  background-image: url('backgroundimage.jpg'); /* Apni photo ka naam rakhna */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0; /* Gol kone hata diye hain */
+  margin-bottom: 0; /* Neeche ka gap hata diya hai */
+}
+
+/* Ye tumhari khud ki photo ka code hai */
+.hero-image {
+  position: absolute;
+  bottom: 0;
+  height: 80%; /* Agar photo choti/badi karni ho to isko change kar lena */
+  z-index: 1;
+}
+.hero-text {
+  font-family: 'Georgia', serif;
+  font-size: 80px;
+  font-style: italic;
+  color: #fff;
+  z-index: 2;
+  position: absolute;
+  top:15%;
+  text-align: center;
+}
+
+.hero-text span {
+  color: #fcd53f; /* Yellow color */
+  font-family: Arial, sans-serif; /* Ye ise emoji banne se rokega */
+  font-style: normal; /* Tumhara naam italic hai, par star seedha rahega */
+  font-size: 70px; /* Star ka size adjust karne ke liye */
+  display: inline-block;
+  transform: translateY(-5px); /* Star ko thoda upar khiskane ke liye taaki naam ke ekdum center me aaye */
+}
+
+.hero-image {
+  position: absolute;
+  bottom: 0;
+  height: 150%;
+  z-index: 1;
+}
+
+.timestamp {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 3;
+}
+
+/* FOOTER LOGOS */
+.footer-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+}
+
+.footer-logos span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+/* BOTTOM SECTION (Toolkit & Intro) */
+.bottom-section {
+  background-color: #fff;
+  padding-bottom: 80px;
+}
+
+.marquee-container {
+  width: 100%;
+  border-top: 1px solid #eaeaea; /* Upar ki boundary */
+  border-bottom: 1px solid #eaeaea; /* Neeche ki boundary */
+  padding: 25px 0; 
+  overflow: hidden; /* Bahar nikalte logos ko chupayega */
+  background: #fff;
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px; /* Intro text aur logos ke beech ka gap */
+}
+
+.marquee-track {
+  display: flex;
+  gap: 80px; /* Logos ke beech ki doori */
+  width: max-content;
+  animation: scrollLogos 15s linear infinite;
+}
+
+.marquee-track img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused; /* Mouse le jane par rukega */
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Aadha khatam hote hi loop wapas ghoomega */
+}
+
+.intro-heading {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #222;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+.toolkit-title {
+  font-size: 14px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.toolkit-logos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  padding-bottom: 35px; 
+  margin-bottom: 50px; 
+  border-bottom: 1px solid #eaeaea; 
+  width: max-content; /* Logos ko ek hi lambi seedhi line mein rakhega */
+  animation: scrollLogos 15s linear infinite; /* Ye line logos ko move karegi */
+}
+
+.toolkit-logos img {
+  height: 45px; /* Logos ki size */
+  object-fit: contain;
+  transition: transform 0.3s ease; /* Hover karne par effect ke liye */
+}
+
+.toolkit-logos:hover {
+  animation-play-state: paused;
+}
+
+.intro-heading {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 32px; /* Font size ko 42px se 32px kar diya hai */
+  font-weight: 500; /* Text ka motapan (boldness) kam kiya hai taaki clean lage */
+  line-height: 1.5; /* Lines ke beech me thoda sa gap aur diya hai */
+  color: #222; /* Ekdum dark black ko thoda soft dark grey kiya hai */
+  max-width: 800px; /* Text ko center me thoda aur compact rakhne ke liye */
+  margin: 0 auto;
+  letter-spacing: -0.5px;
+}
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 📱 MOBILE MEDIA QUERY */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    padding: 20px 20px 0 20px;
+  }
+
+  .sidebar-menu {
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 10px;
+    padding-bottom: 0;
+    gap: 0;
+  }
+
+  .menu-item {
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+
+  .menu-item.active {
+    border-bottom: 2px solid #000;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    z-index: 10;
+  }
+
+  /* Jab JS class add karega tab links dikhenge */
+  .nav-links.show-mobile-menu {
+    display: flex;
+  }
+
+  .hamburger-icon {
+    display: block; 
+  }
+
+  .hero-text {
+    font-size: 45px;
+    top: 10%;
+  }
+
+  .footer-logos {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    justify-content: center;
+  }
+}
