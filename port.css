@@ -457,3 +457,96 @@ body {
     justify-content: center;
   }
 }
+
+
+/* --- NEW PROJECTS GRID SECTION --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards ek line mein */
+  gap: 30px;
+  padding: 40px 0;
+  width: 100%;
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Box ko square/perfect ratio mein rakhne ke liye */
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #f7f7f7; /* Agar image load na ho toh yeh color dikhega */
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Image ko properly fit karne ke liye */
+  display: block;
+}
+
+.card-content h3 {
+  font-family: inherit;
+  font-size: 22px;
+  color: #111;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.card-content p {
+  font-family: inherit;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablet par 2 cards */
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Mobile par 1 card */
+  }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+
+    .projects-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 15px 0;
+    }
+
+    .project-image {
+        height: 250px;
+    }
+
+    .project-card h3 {
+        font-size: 16px;
+    }
+
+    .project-card p {
+        font-size: 13px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media screen and (max-width: 400px) {
+
+    .project-image {
+        height: 210px;
+    }
+
+}
